@@ -1,0 +1,11 @@
+name: ${project.name}
+version: ${project.version}
+main: ${project.groupId}.${project.artifactId}.${project.name}
+author: Trigary
+description: ${project.description}
+website: ${project.url}
+
+commands:
+  knossos:
+    description: "Testing"
+    usage: "Error"
