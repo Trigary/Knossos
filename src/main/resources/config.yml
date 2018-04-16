@@ -5,4 +5,4 @@
 # This many segments will be set in a tick when mazes are being instantiated.
 # A segment is usually a square cell. The count of segments is proportional to the maze size
 # and the size of the segments is proportional to the width of the passage.
-segment-per-tick: 3
+segment-per-tick: 5

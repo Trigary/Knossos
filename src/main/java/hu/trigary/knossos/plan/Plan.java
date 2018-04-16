@@ -2,6 +2,7 @@ package hu.trigary.knossos.plan;
 
 import hu.trigary.knossos.data.CellCoord;
 import hu.trigary.knossos.data.cell.CellType;
+import org.apache.commons.lang.Validate;
 
 import java.util.Arrays;
 
@@ -16,6 +17,7 @@ public abstract class Plan<T extends CellType> {
 	protected final T[][] cells;
 	
 	protected Plan(int width, int length, int size, T defaultCellType) {
+		Validate.isTrue(width > 0 && length > 0 && size > 0, "The dimensions must be positive.");
 		this.width = width;
 		this.length = length;
 		this.size = size;

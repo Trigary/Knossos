@@ -7,8 +7,8 @@ public enum MazeCellType implements CellType {
 	PATH_START,
 	
 	/**
-	 * A block on the way between {@link MazeCellType#PATH_START} and
-	 * {@link MazeCellType#PATH_FINISH} or {@link MazeCellType#PATH_DEAD_END}.
+	 * A block on the way between {@link #PATH_START} and
+	 * {@link #PATH_FINISH} or {@link #PATH_DEAD_END}.
 	 */
 	PATH_CORRIDOR,
 	
@@ -18,7 +18,7 @@ public enum MazeCellType implements CellType {
 	PATH_CORNER,
 	
 	/**
-	 * A place where {@link MazeCellType#PATH_CORRIDOR} branches.
+	 * A place where {@link #PATH_CORRIDOR} branches.
 	 */
 	PATH_JUNCTION,
 	
@@ -28,7 +28,7 @@ public enum MazeCellType implements CellType {
 	PATH_FINISH,
 	
 	/**
-	 * The end of a {@link MazeCellType#PATH_CORRIDOR}, which isn't {@link MazeCellType#PATH_FINISH}.
+	 * The end of a {@link #PATH_CORRIDOR}, which isn't {@link #PATH_FINISH}.
 	 */
 	PATH_DEAD_END,
 	

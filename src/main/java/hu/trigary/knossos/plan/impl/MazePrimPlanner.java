@@ -1,5 +1,6 @@
-package hu.trigary.knossos.plan.maze;
+package hu.trigary.knossos.plan.impl;
 
+import hu.trigary.knossos.data.Arguments;
 import hu.trigary.knossos.data.CellCoord;
 import hu.trigary.knossos.data.KnossosException;
 import hu.trigary.knossos.data.cell.MazeCellType;
@@ -15,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class MazePrimPlanner extends Planner<MazeCellType> {
 	@Override
-	public Plan<MazeCellType> plan(int width, int length, int size, CellCoord start, String[] args) throws KnossosException {
+	public Plan<MazeCellType> plan(int width, int length, int size, CellCoord start, Arguments args) throws KnossosException {
 		MutablePlan<MazeCellType> plan = new MutablePlan<>(width, length, size, MazeCellType.WALL);
 		if (start == null) {
 			start = new CellCoord(randBool() ? 0 : width - 1, randBool() ? 0 : length - 1);

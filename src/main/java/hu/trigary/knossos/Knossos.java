@@ -2,11 +2,11 @@ package hu.trigary.knossos;
 
 import hu.trigary.knossos.build.BuildTask;
 import hu.trigary.knossos.build.Builder;
-import hu.trigary.knossos.build.maze.MazeLayoutBuilder;
+import hu.trigary.knossos.command.KnossosCommand;
 import hu.trigary.knossos.data.cell.CellType;
 import hu.trigary.knossos.plan.Planner;
-import hu.trigary.knossos.plan.maze.MazePrimPlanner;
-import hu.trigary.knossos.command.KnossosCommand;
+import org.apache.commons.lang.Validate;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -30,9 +30,6 @@ public class Knossos extends JavaPlugin {
 		saveDefaultConfig();
 		segmentPerTick = getConfig().getInt("segment-per-tick");
 		
-		registerPlanner("maze-prim", new MazePrimPlanner());
-		registerBuilder("maze-layout", new MazeLayoutBuilder());
-		
 		getCommand("knossos").setExecutor(new KnossosCommand());
 	}
 	
@@ -45,12 +42,12 @@ public class Knossos extends JavaPlugin {
 	
 	
 	public void registerPlanner(String name, Planner<? extends CellType> planner) {
-		Planner previous = planners.get(name);
+		Validate.notNull(planner, "The planner which should be registered cannot be null.");
+		Planner previous = planners.put(name, planner);
 		if (previous != null) {
-			throw new IllegalStateException("A planner with the specified name ("
-					+ name + ") is already registered: " + previous.getClass().getName());
+			Bukkit.getLogger().warning("A planner named " + name +
+					" was overridden, the original one was: " + previous.getClass().getName());
 		}
-		planners.put(name, planner);
 	}
 	
 	public Planner<? extends CellType> getPlanner(String name) {
@@ -60,12 +57,12 @@ public class Knossos extends JavaPlugin {
 	
 	
 	public void registerBuilder(String name, Builder<? extends CellType> builder) {
-		Builder previous = builders.get(name);
+		Validate.notNull(builder, "The builder which should be registered cannot be null.");
+		Builder previous = builders.put(name, builder);
 		if (previous != null) {
-			throw new IllegalStateException("A builder with the specified name ("
-					+ name + ") is already registered: " + previous.getClass().getName());
+			Bukkit.getLogger().warning("A builder named " + name +
+					" was overridden, the original one was: " + previous.getClass().getName());
 		}
-		builders.put(name, builder);
 	}
 	
 	public Builder<? extends CellType> getBuilder(String name) {
@@ -78,6 +75,7 @@ public class Knossos extends JavaPlugin {
 	 * @param task the task to put into the to-build queue
 	 */
 	public void scheduleBuild(BuildTask task) {
+		Validate.notNull(task, "The task which should be scheduled cannot be null.");
 		if (currentBuild != null) {
 			buildTasks.add(task);
 		} else {
