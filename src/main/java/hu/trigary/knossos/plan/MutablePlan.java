@@ -3,6 +3,11 @@ package hu.trigary.knossos.plan;
 import hu.trigary.knossos.data.CellCoord;
 import hu.trigary.knossos.data.cell.CellType;
 
+/**
+ * A mutable version of {@link Plan}, only used in {@link Planner} instances.
+ *
+ * @param <T> the type of cells this plan holds
+ */
 public class MutablePlan<T extends CellType> extends Plan<T> {
 	/**
 	 * @param width number of cells along the x axis

@@ -16,6 +16,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 
+/**
+ * Main class of the plugin; the primary source of interaction.
+ */
 public class Knossos extends JavaPlugin {
 	private static Knossos instance;
 	private final Map<String, Planner<? extends CellType>> planners = new HashMap<>();

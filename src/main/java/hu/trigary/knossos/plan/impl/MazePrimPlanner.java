@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * A {@link Planner} which generates a maze {@link Plan} using the randomized Prim's algorithm.
+ */
 public class MazePrimPlanner extends Planner<MazeCellType> {
 	@Override
 	public Plan<MazeCellType> plan(int width, int length, int size, CellCoord start, Arguments args) throws KnossosException {

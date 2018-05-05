@@ -4,7 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 
 /**
- * Stores {@link Material} - data {@link Byte} pair.
+ * Stores a {@link Material} - data {@link Byte} pair.
  */
 public class BlockInfo {
 	public static final BlockInfo AIR = new BlockInfo(Material.AIR);

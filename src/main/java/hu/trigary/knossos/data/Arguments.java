@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A collection of arguments which can either be a key-value pair or valueless.
+ * A collection of arguments which can either be key-value pairs or valueless.
  */
 public class Arguments {
 	private final Map<String, String> content = new HashMap<>();
@@ -48,8 +48,10 @@ public class Arguments {
 	/**
 	 * @param key argument's identifier
 	 * @param value value or null, if the argument should be valueless
+	 * @return the current {@link Arguments} instance for chaining
 	 */
-	public void setValue(String key, String value) {
+	public Arguments setValue(String key, String value) {
 		content.put(key, value);
+		return this;
 	}
 }

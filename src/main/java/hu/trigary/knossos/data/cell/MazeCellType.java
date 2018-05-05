@@ -1,5 +1,8 @@
 package hu.trigary.knossos.data.cell;
 
+/**
+ * Cell types for mazes.
+ */
 public enum MazeCellType implements CellType {
 	/**
 	 * The start of the maze - the place where players are starting from.

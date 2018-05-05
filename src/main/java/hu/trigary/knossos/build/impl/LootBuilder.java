@@ -52,7 +52,7 @@ public class LootBuilder<T extends CellType> extends Builder<T> {
 		if (minHeight < 0 || maxHeight < 0 || minHeight > maxHeight ||
 				origin.getBlockY() + maxHeight >= origin.getWorld().getMaxHeight()) {
 			throw new KnossosException("The 'min-height' and/or 'max-height' parameters were invalid. " +
-					"They should specify the offset range in which items containers should be searched for.");
+					"They should specify the range in which item containers should be searched for.");
 		}
 		
 		final int finalMinHeight = minHeight;

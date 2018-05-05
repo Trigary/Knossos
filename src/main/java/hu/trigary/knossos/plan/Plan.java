@@ -9,6 +9,8 @@ import java.util.Arrays;
 /**
  * Dungeon and maze plans implement this class. Plan means that the cells have been planned out,
  * but the structure is yet to be instantiated in the world.
+ *
+ * @param <T> the type of cells this plan holds
  */
 public abstract class Plan<T extends CellType> {
 	protected final int width;

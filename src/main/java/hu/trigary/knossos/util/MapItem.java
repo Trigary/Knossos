@@ -12,18 +12,21 @@ import org.bukkit.map.MapCanvas;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
-import java.util.function.Function;
+import java.util.Map;
 
+/**
+ * A utility class for creating in-game map items with a maze or dungeon {@link Plan} drawn on them.
+ */
 public class MapItem {
 	/**
 	 * @param plan {@link Plan} to draw, must be at most 128x128
-	 * @param colorMapper maps cell types to colors
+	 * @param colorMap maps cell types to colors
 	 * @param defaultColor color of all non-plan pixels
 	 * @param <T> the type of plan which should be applied
 	 * @return the creates map item
 	 */
 	@SuppressWarnings("deprecation")
-	public static <T extends CellType> ItemStack get(Location center, Plan<T> plan, Function<T, Byte> colorMapper, byte defaultColor) {
+	public static <T extends CellType> ItemStack get(Location center, Plan<T> plan, Map<T, Byte> colorMap, byte defaultColor) {
 		Validate.isTrue(plan.getLength() <= 128 && plan.getWidth() <= 128, "The plan must be at most 128x128.");
 		MapView map = Bukkit.createMap(center.getWorld());
 		ItemStack item = new ItemStack(Material.MAP, 1, map.getId());
@@ -44,7 +47,7 @@ public class MapItem {
 				for (int x = 0; x < 128; x++) {
 					for (int y = 0; y < 128; y++) {
 						if (x < maxX && y < maxY) {
-							canvas.setPixel(x, y, colorMapper.apply(plan.getBlock(x / scale, y / scale)));
+							canvas.setPixel(x, y, colorMap.get(plan.getBlock(x / scale, y / scale)));
 						} else {
 							canvas.setPixel(x, y, defaultColor);
 						}

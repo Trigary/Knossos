@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Maps a {@link CellType} to a {@link BlockInfo}: just instantiates the {@link Plan}'s structure.
+ * Maps a {@link CellType} to a {@link BlockInfo}: instantiates the {@link Plan}'s structure.
  */
 public class LayoutBuilder<T extends CellType> extends Builder<T> {
 	private final Map<String, Map<T, BlockInfo>> materials = new HashMap<>();
